@@ -1,0 +1,11 @@
+C++ (pronounced "see plus plus") is a programming language that is general purpose, statically typed, free-form, multi-paradigm and compiled. 
+It is regarded as an intermediate-level language, as it comprises both high-level and low-level language features.[3] Developed by Bjarne 
+Stroustrup starting in 1979 at Bell Labs, C++ was originally named C with Classes, adding object oriented features, such as classes, and other 
+enhancements to the C programming language. The language was renamed C++ in 1983,[4] as a pun involving the increment operator.
+C++ is one of the most popular programming languages[5][6] and is implemented on a wide variety of hardware and operating system platforms. 
+As an efficient compiler to native code, its application domains include systems software, application software, device drivers, embedded software, 
+high-performance server and client applications, and entertainment software such as video games.[7] Several groups provide both free and proprietary 
+C++ compiler software, including the GNU Project, LLVM, Microsoft and Intel. C++ has greatly influenced many other popular programming languages, 
+most notably C#[2] and Java.
+C++ is also used for hardware design, where the design is initially described in C++, then analyzed, architecturally constrained, and scheduled to 
+create a register-transfer level hardware description language via high-level synthesis.[8]

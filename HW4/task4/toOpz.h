@@ -1,0 +1,1 @@
+char * toOpz(char * str);

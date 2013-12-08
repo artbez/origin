@@ -1,0 +1,1 @@
+int calculateByOpz(char * str);
