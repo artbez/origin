@@ -30,6 +30,8 @@ bool isDouble(char *& str, const int size)
             {
                 curState = IntegerPart;
                 index++;
+                if (index == size)
+                    return false;
             }
             else if (isDigit(curChar))
                 curState = IntegerPart;
@@ -44,7 +46,23 @@ bool isDouble(char *& str, const int size)
             {
                curState = DotPart;
                index++;
+               if (index == size)
+                   return false;
             }
+            else if (isEpsilon(curChar))
+            {
+                curState = EpsilonPart;
+                index++;
+                if (index == size)
+                    return false;
+            }
+            else
+                return false;
+            break;
+
+        case DotPart:
+            if (isDigit(curChar))
+                index++;
             else if (isEpsilon(curChar))
             {
                 curState = EpsilonPart;
@@ -54,21 +72,13 @@ bool isDouble(char *& str, const int size)
                 return false;
             break;
 
-        case DotPart:
-            if (isDigit(curChar))
-                index++;
-            if (isEpsilon(curChar))
-            {
-                curState = EpsilonPart;
-                index++;
-            }
-            break;
-
         case EpsilonPart:
             if (isSign(curChar))
             {
                 curState = AfterEpsilonPart;
                 index++;
+                if (index == size)
+                    return false;
             }
             else if (isDigit(curChar))
                 curState = AfterEpsilonPart;
