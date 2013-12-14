@@ -61,12 +61,16 @@ bool isDouble(char *& str, const int size)
             break;
 
         case DotPart:
+            if (!isDigit(curChar))
+                return false;
             if (isDigit(curChar))
                 index++;
             else if (isEpsilon(curChar))
             {
                 curState = EpsilonPart;
                 index++;
+                if (index == size)
+                    return false;
             }
             else
                 return false;
