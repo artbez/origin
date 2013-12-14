@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string.h>
+#include "myDouble.h"
 
 using std::cin;
 using std::cout;
@@ -9,7 +10,7 @@ bool preMul(int &indexOfStr, char *& str, const int length);
 bool sum(int &indexOfStr, char *& str, const int length);
 bool mul(int &indexOfStr, char *& str, const int length);
 bool preBrack(int &indexOfStr, char *& str, const int length);
-bool isNum(int &indexOfStr, char *& str);
+bool isNum(int &indexOfStr, char *& str, const int length);
 
 int main()
 {
@@ -53,7 +54,7 @@ bool mul(int &indexOfStr, char *& str, const int length)
 {
     if (indexOfStr == length) return true;
     int curIndex = indexOfStr;
-    if (str[indexOfStr] == '*' || (str[indexOfStr] == '/'))
+    if ((str[indexOfStr] == '*') || (str[indexOfStr] == '/'))
     {
         indexOfStr++;
         return (preBrack(indexOfStr, str, length) * mul(indexOfStr, str, length));
@@ -71,18 +72,13 @@ bool preBrack(int &indexOfStr, char *& str, const int length)
         return true;
     }
     indexOfStr = curIndex;
-    if (isNum(indexOfStr, str))
+    if (isNum(indexOfStr, str, length))
         return true;
     indexOfStr = curIndex;
     return false;
 }
 
-bool isNum(int &indexOfStr, char *& str)
+bool isNum(int &indexOfStr, char *& str, const int length)
 {
-    if (str[indexOfStr] >= '0' && str[indexOfStr] <= '9')
-    {
-        indexOfStr++;
-        return true;
-    }
-    return false;
+    return (isDouble(str, length, indexOfStr));
 }
