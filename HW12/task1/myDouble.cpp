@@ -10,47 +10,47 @@ bool isSign(char ch);
 bool isEpsilon(char ch);
 bool isDot(char ch);
 
-enum state{
-    Start, IntegerPart, DotPart, EpsilonPart, AfterEpsilonPart
+enum State{
+    start, integerPart, dotPart, epsilonPart, afterEpsilonPart
 };
 
-bool isFinishState(state curState);
+bool isFinishState(State curState);
 
 bool isDouble(char *& str, const int size, int &index)
 {
-    state curState = Start;
+    State curState = start;
     while(index < size)
     {
         char curChar = str[index];
         switch(curState)
         {
-        case Start:
+        case start:
             if (isSign(curChar))
             {
-                curState = IntegerPart;
+                curState = integerPart;
                 index++;
                 if (!((index != size) && isDigit(str[index])))
                     return false;
             }
             else if (isDigit(curChar))
-                curState = IntegerPart;
+                curState = integerPart;
             else
                 return false;
             break;
 
-        case IntegerPart:
+        case integerPart:
             if (isDigit(curChar))
                 index++;
             else if (isDot(curChar))
             {
-               curState = DotPart;
+               curState = dotPart;
                index++;
                if (!((index != size) && isDigit(str[index])))
                    return false;
             }
             else if (isEpsilon(curChar))
             {
-                curState = EpsilonPart;
+                curState = epsilonPart;
                 index++;
                 if (!((index != size) && (isDigit(str[index]) || isSign(str[index]))))
                     return false;
@@ -59,12 +59,12 @@ bool isDouble(char *& str, const int size, int &index)
                 return true;
             break;
 
-        case DotPart:
+        case dotPart:
             if (isDigit(curChar))
                 index++;
             else if (isEpsilon(curChar))
             {
-                curState = EpsilonPart;
+                curState = epsilonPart;
                 index++;
                 if (!((index != size) && (isDigit(str[index]) || isSign(str[index]))))
                     return false;
@@ -73,21 +73,21 @@ bool isDouble(char *& str, const int size, int &index)
                 return true;
             break;
 
-        case EpsilonPart:
+        case epsilonPart:
             if (isSign(curChar))
             {
-                curState = AfterEpsilonPart;
+                curState = afterEpsilonPart;
                 index++;
                 if (!((index != size) && isDigit(str[index])))
                     return false;
             }
             else if (isDigit(curChar))
-                curState = AfterEpsilonPart;
+                curState = afterEpsilonPart;
             else
                 return false;
             break;
 
-        case AfterEpsilonPart:
+        case afterEpsilonPart:
             if (isDigit(curChar))
                 index++;
             else
@@ -121,8 +121,8 @@ bool isDot(char ch)
     return (ch == '.');
 }
 
-bool isFinishState(state curState)
+bool isFinishState(State curState)
 {
-    return (curState == IntegerPart || curState == DotPart
-            || curState == AfterEpsilonPart);
+    return (curState == integerPart || curState == dotPart
+            || curState == afterEpsilonPart);
 }
