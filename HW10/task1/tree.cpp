@@ -24,6 +24,8 @@ namespace TreeSpace
 		tree->root->left = tree1->root;
 		tree->root->rigth = tree2->root;
 		tree->root->value = tree1->root->value + tree2->root->value;
+		delete tree1;
+		delete tree2;
 		return tree;
 	}
 
@@ -90,7 +92,7 @@ namespace TreeSpace
 
 	void deleteTree(Tree *& tree)
 	{
-//		if (tree->root != NULL)
+		if (tree->root != NULL)
 			deleteTreeNode(tree->root);
 		//delete(tree->root);
 	}
