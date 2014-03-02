@@ -10,6 +10,7 @@ public:
     virtual ~Stack(){};
     virtual void printStack() = 0;
     virtual int length() = 0;
+    virtual int getFirst() = 0;
     virtual void push(int value) = 0;
     virtual void pop() = 0;
     virtual void deleteStack() = 0;

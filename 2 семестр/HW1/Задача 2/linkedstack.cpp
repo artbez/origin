@@ -44,7 +44,6 @@ void LinkedStack::pop()
     if (head == nullptr)
     {
         std::cerr << "Error. The stack is empty";
-        this->deleteStack();
         exit(0);
     }
 
@@ -61,4 +60,15 @@ void LinkedStack::deleteStack()
         this->pop();
         length--;
     }
+}
+
+int LinkedStack::getFirst()
+{
+    if (head == nullptr)
+    {
+        std::cerr << "Error. The stack is empty";
+        exit(0);
+    }
+
+    return head->getValue();
 }

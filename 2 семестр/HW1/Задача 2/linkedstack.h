@@ -10,6 +10,7 @@ public:
     ~LinkedStack();
     void printStack();
     int length();
+    int getFirst();
     void push(int value);
     void pop();
     void deleteStack();
