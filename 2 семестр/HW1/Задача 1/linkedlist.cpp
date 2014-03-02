@@ -9,12 +9,12 @@ LinkedList::~LinkedList()
 
 void LinkedList::printList()
 {
-    ListElement * le = head->next;
+    ListElement * le = head->getNext();
     while(le != nullptr)
     {
         le->printElement();
         std::cout << "; ";
-        le = le->next;
+        le = le->getNext();
     }
 }
 
@@ -22,11 +22,11 @@ int LinkedList::length()
 {
     int result = 0;
 
-    ListElement * le = head->next;
+    ListElement * le = head->getNext();
     while(le != nullptr)
     {
         result++;
-        le = le->next;
+        le = le->getNext();
     }
 
     return result;
@@ -35,10 +35,10 @@ int LinkedList::length()
 void LinkedList::insert(int position, int value)
 {
     ListElement * le = head;
-    while(le->next != nullptr && position > 0)
+    while(le->getNext() != nullptr && position > 0)
     {
         position--;
-        le = le->next;
+        le = le->getNext();
     }
 
     if (position != 0)
@@ -49,29 +49,29 @@ void LinkedList::insert(int position, int value)
     }
 
     ListElement * newListEl = new ListElement();
-    newListEl->value = value;
-    newListEl->next = le->next;
-    le->next = newListEl;
+    newListEl->takeValue(value);
+    newListEl->takeNext(le->getNext());
+    le->takeNext(newListEl);
 }
 
 void LinkedList::deleteElement(int position)
 {
     ListElement * le = head;
-    while(le->next != nullptr && position > 0)
+    while(le->getNext() != nullptr && position > 0)
     {
         position--;
-        le = le->next;
+        le = le->getNext();
     }
 
-    if (le->next == nullptr || position > 0)
+    if (le->getNext() == nullptr || position > 0)
     {
         std::cerr << "Error. The index is no element with this index";
         deleteList();
         exit(0);
     }
 
-    ListElement * newListEl = le->next;
-    le->next = le->next->next;
+    ListElement * newListEl = le->getNext();
+    le->takeNext(le->getNext()->getNext());
     delete newListEl;
 }
 

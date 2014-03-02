@@ -1,12 +1,6 @@
 #include "listonarray.h"
 #include <iostream>
 
-ListOnArray::ListOnArray()
-{
-    mainArray = new int[MAX_LENGTH];
-    currentLength = 0;
-}
-
 ListOnArray::~ListOnArray()
 {
     this->deleteList();

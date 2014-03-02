@@ -1,12 +1,6 @@
 #include "linkedstack.h"
 #include <iostream>
 
-LinkedStack::LinkedStack() : Stack()
-{
-    this->head = nullptr;
-    this->next = nullptr;
-}
-
 LinkedStack::~LinkedStack()
 {
     this->deleteStack();
@@ -14,12 +8,12 @@ LinkedStack::~LinkedStack()
 
 void LinkedStack::printStack()
 {
-    LinkedStack * list = this;
-    while(list->head != nullptr)
+    ListElement * le = head;
+    while(le != nullptr)
     {
-        list->head->printElement();
+        le->printElement();
         std::cout << "; ";
-        list = list->next;
+        le = le->getNext();
     }
 }
 
@@ -27,37 +21,36 @@ int LinkedStack::length()
 {
     int result = 0;
 
-    LinkedStack * list = this->next;
-    while(list != nullptr)
+    ListElement * le = head;
+    while(le != nullptr)
     {
         result++;
-        list = list->next;
+        le = le->getNext();
     }
 
     return result;
 }
 
-void LinkedStack::push(ListElement * newElement)
+void LinkedStack::push(int value)
 {
-    LinkedStack * list = new LinkedStack();
-    list->head = this->head;
-    list->next = this->next;
-    this->head = newElement;
-    this->next = list;
+    ListElement * newEl = new ListElement();
+    newEl->takeValue(value);
+    newEl->takeNext(head);
+    head = newEl;
 }
 
 void LinkedStack::pop()
 {
-    if (this->head == nullptr)
+    if (head == nullptr)
     {
         std::cerr << "Error. The stack is empty";
         this->deleteStack();
         exit(0);
     }
 
-    delete this->head;
-    this->head = this->next->head;
-    this->next = this->next->next;
+    ListElement * le = head;
+    head = head->getNext();
+    delete le;
 }
 
 void LinkedStack::deleteStack()

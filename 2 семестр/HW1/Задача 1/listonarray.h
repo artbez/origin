@@ -7,7 +7,6 @@
 class ListOnArray : public List
 {
 public:
-    ListOnArray();
     ~ListOnArray();
     void printList();
     int length();
@@ -16,8 +15,8 @@ public:
     void deleteList();
 private:
     const int MAX_LENGTH = 100;
-    int * mainArray;
-    int currentLength;
+    int * mainArray = new int[MAX_LENGTH];
+    int currentLength = 0;
 };
 
 #endif // LISTONARRAY_H

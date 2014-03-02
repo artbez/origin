@@ -10,8 +10,10 @@ public:
     ListElement();
     int getValue();
     void takeValue(int value);
+    ListElement * getNext();
+    void takeNext(ListElement * le);
     void printElement();
-public:
+private:
     int value;
     ListElement * next = nullptr;
 };

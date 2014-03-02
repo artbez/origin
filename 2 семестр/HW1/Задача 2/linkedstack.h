@@ -7,15 +7,14 @@
 class LinkedStack : public Stack
 {
 public:
-    LinkedStack();
     ~LinkedStack();
     void printStack();
     int length();
-    void push(ListElement * newElement);
+    void push(int value);
     void pop();
     void deleteStack();
 private:
-    LinkedStack * next;
+    ListElement * head = nullptr;
 };
 
 #endif // LINKEDSTACK_H

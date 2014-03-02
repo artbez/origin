@@ -7,12 +7,11 @@
 class Stack
 {
 public:
+    virtual ~Stack(){};
     virtual void printStack() = 0;
     virtual int length() = 0;
-    virtual void push(ListElement * newElement) = 0;
+    virtual void push(int value) = 0;
     virtual void pop() = 0;
     virtual void deleteStack() = 0;
-protected:
-    ListElement * head;
 };
 #endif // STACK_H

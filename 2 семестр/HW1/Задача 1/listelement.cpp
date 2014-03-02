@@ -13,12 +13,22 @@ ListElement::ListElement()
 
 int ListElement::getValue()
 {
-    return this->value;
+    return value;
 }
 
 void ListElement::takeValue(int value)
 {
     this->value = value;
+}
+
+ListElement * ListElement::getNext()
+{
+    return next;
+}
+
+void ListElement::takeNext(ListElement * le)
+{
+    next = le;
 }
 
 void ListElement::printElement()
