@@ -1,22 +1,18 @@
-namespace StackSpace
-{	
-	struct ListElement 
-	{
-		int value;
-		ListElement *next;
-	};
+#ifndef STACK_H
+#define STACK_H
 
-	struct Stack 
-	{
-		ListElement *head;
-	};
+#pragma once
+#include "listelement.h"
 
-	void init(Stack &l);
-	bool isEmpty(Stack &l);
-	int getFirst(Stack &l);
-	void printList(Stack &l);
-	void add(int value, Stack &l);
-	void pop(Stack &l);
-	int length(Stack &l);
-	void deleteStack(Stack &l);
-}
+class Stack
+{
+public:
+    virtual ~Stack(){};
+    virtual void printStack() = 0;
+    virtual int length() = 0;
+    virtual int getFirst() = 0;
+    virtual void push(int value) = 0;
+    virtual void pop() = 0;
+    virtual void deleteStack() = 0;
+};
+#endif // STACK_H
