@@ -6,7 +6,7 @@
 class List
 {
 public:
-    virtual ~List(){};
+    virtual ~List(){}
     virtual void printList() = 0;
     virtual int length() = 0;
     virtual void insert(int position, int value) = 0;
