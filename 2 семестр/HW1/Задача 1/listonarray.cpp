@@ -3,12 +3,12 @@
 
 ListOnArray::~ListOnArray()
 {
-    this->deleteList();
+    deleteList();
 }
 
 void ListOnArray::printList()
 {
-    for (int i = 0; i < this->currentLength; ++i)
+    for (int i = 0; i < currentLength; ++i)
     {
         std::cout << mainArray[i] << "; ";
     }
@@ -16,18 +16,18 @@ void ListOnArray::printList()
 
 int ListOnArray::length()
 {
-    return this->currentLength;
+    return currentLength;
 }
 
 void ListOnArray::insert(int position, int value)
 {
-    if (currentLength == MAX_LENGTH)
+    if (currentLength == maxLength)
     {
-        std::cerr << "Error. The maximum of elements is " << MAX_LENGTH << "\n";
-        this->deleteList();
+        std::cerr << "Error. The maximum of elements is " << maxLength << "\n";
+        deleteList();
         exit(0);
     }
-    int * newArray = new int[MAX_LENGTH];
+    int * newArray = new int[maxLength];
 
     for (int i = 0; i < position; ++i)
     {
@@ -54,10 +54,10 @@ void ListOnArray::deleteElement(int position)
     if (currentLength <= position)
     {
         std::cerr << "Error. There is no element with this index " << "\n";
-        this->deleteList();
+        deleteList();
         exit(0);
     }
-    int * newArray = new int[MAX_LENGTH];
+    int * newArray = new int[maxLength];
     for (int i = 0; i < position; ++i)
     {
         newArray[i] = mainArray[i];

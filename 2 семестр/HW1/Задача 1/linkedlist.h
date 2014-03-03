@@ -3,6 +3,7 @@
 
 #pragma once
 #include "list.h"
+#include "listelement.h"
 
 class LinkedList : public List
 {

@@ -4,7 +4,8 @@
 
 LinkedList::~LinkedList()
 {
-    this->deleteList();
+    deleteList();
+    delete head;
 }
 
 void LinkedList::printList()
@@ -83,6 +84,4 @@ void LinkedList::deleteList()
         deleteElement(0);
         length--;
     }
-
-  //  delete head;
 }

@@ -3,12 +3,12 @@
 
 ListElement::ListElement(int value)
 {
-    this->takeValue(value);
+    takeValue(value);
 }
 
 ListElement::ListElement()
 {
-    this->takeValue(0);
+    takeValue(0);
 }
 
 int ListElement::getValue()
@@ -33,5 +33,5 @@ void ListElement::takeNext(ListElement * le)
 
 void ListElement::printElement()
 {
-    std::cout << this->value;
+    std::cout << value;
 }
