@@ -7,7 +7,7 @@
 class Stack
 {
 public:
-    virtual ~Stack(){};
+    virtual ~Stack(){}
     virtual void printStack() = 0;
     virtual int length() = 0;
     virtual int getFirst() = 0;

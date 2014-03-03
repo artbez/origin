@@ -21,13 +21,13 @@ int StackOnArray::length()
 
 void StackOnArray::push(int value)
 {
-    if (currentLength == MAX_LENGTH)
+    if (currentLength == maxLength)
     {
-        std::cerr << "Error. The maximum of elements is " << MAX_LENGTH << "\n";
+        std::cerr << "Error. The maximum of elements is " << maxLength << "\n";
         this->deleteStack();
         exit(0);
     }
-    int * newArray = new int[MAX_LENGTH];
+    int * newArray = new int[maxLength];
 
     newArray[0] = value;
     for (int i = 0; i < currentLength; ++i)

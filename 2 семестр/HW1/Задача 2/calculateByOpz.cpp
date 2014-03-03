@@ -96,7 +96,7 @@ int calculateByOpz(char * str)
 
     int answer = myStack->getFirst();
 
-    myStack->deleteStack();
+    delete myStack;
     delete[] str;
 
 

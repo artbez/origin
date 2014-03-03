@@ -15,8 +15,8 @@ public:
     void pop();
     void deleteStack();
 private:
-    const int MAX_LENGTH = 100;
-    int * mainArray = new int[MAX_LENGTH];
+    const int maxLength = 100;
+    int * mainArray = new int[maxLength];
     int currentLength = 0;
 };
 
