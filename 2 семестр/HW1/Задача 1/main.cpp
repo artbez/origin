@@ -14,7 +14,6 @@ int main()
     std::cout << "\n\n\n";
     linkedList->deleteElement(0);
     linkedList->printList();
-    linkedList->deleteList();
     std::cout << "\n\n";
     delete linkedList;
 
@@ -29,10 +28,7 @@ int main()
     std::cout << "\n";
     listOnArray->deleteElement(0);
     listOnArray->printList();
-    listOnArray->deleteList();
     delete listOnArray;
-
-
 
     return 0;
 }

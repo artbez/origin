@@ -20,7 +20,6 @@ int main()
     stack->pop();
     stack->pop();
     stack->printStack();
-    stack->deleteStack();
     delete stack;
 
     cout << "\n\n\n";
@@ -36,7 +35,6 @@ int main()
     std::cout << "\n";
     stackOnArray->pop();
     stackOnArray->printStack();
-    stackOnArray->deleteStack();
     delete stackOnArray;
 
     cout << "\n\n\n";
