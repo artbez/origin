@@ -103,8 +103,6 @@ char *toOpz(char * str)
     answer[mainIndex] = '\0';
 
     delete myStack;
-    delete[] str;
-
     return answer;
 }
 
