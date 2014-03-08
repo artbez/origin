@@ -8,10 +8,8 @@ public:
     /// Constructor which take a name of file
     FileWriter(const char * newFileName);
     ~FileWriter();
-    /// Method which can print a matrix as a spiral bypass to console
-    void write(int ** arr, int number);
 private:
-    /// Method which check is it possible or not move to the next cell
-    bool step(int ** arr, int &index1, int &index2, int &direct, int sum, int max, int number);
+    /// Method which print element of the matrix to file
+    void printElement(int el);
     std::ofstream fileName;
 };
