@@ -23,8 +23,7 @@ void MainWindow::sthWasChanged()
     first = ui->firstNumber->value();
     int second = 0;
     second = ui->secondNumber->value();
-    int curr = ui->sign->currentIndex();
-    Calculator calc;
-    QString newText = calc.calculate(first, second, curr);
+    QString curr = ui->sign->currentText();
+    QString newText = Calculator::calculate(first, second, curr.at(0).toLatin1());
     emit ui->result->setText(newText);
 }

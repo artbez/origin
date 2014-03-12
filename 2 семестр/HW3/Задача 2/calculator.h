@@ -4,5 +4,5 @@
 class Calculator
 {
 public:
-    QString calculate(int firstNum, int secondNum, int sign);
+    static QString calculate(int firstNum, int secondNum, char sign);
 };

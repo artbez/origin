@@ -1,20 +1,21 @@
 #include "calculator.h"
 
-QString Calculator::calculate(int firstNum, int secondNum, int sign)
+QString Calculator::calculate(int firstNum, int secondNum, char sign)
 {
+
     int result = 0;
     switch (sign)
     {
-    case 0:
+    case '+':
         result = firstNum + secondNum;
         break;
-    case 1:
+    case '-':
         result = firstNum - secondNum;
         break;
-    case 2:
+    case '*':
         result = firstNum * secondNum;
         break;
-    case 3:
+    case '/':
         if (secondNum != 0)
             result = firstNum / secondNum;
         else
