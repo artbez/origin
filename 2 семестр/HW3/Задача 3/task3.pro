@@ -24,8 +24,8 @@ SOURCES += main.cpp\
 HEADERS  += mainwindow.h \
     toOpz.h \
     stack.h \
-    listelement.h \
     linkedstack.h \
-    calculateByOpz.h
+    calculateByOpz.h \
+    listelement.h
 
 FORMS    += mainwindow.ui

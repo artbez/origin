@@ -1,7 +1,4 @@
-#ifndef TOOPZ_H
-#define TOOPZ_H
-
 #include "linkedstack.h"
-char * toOpz(const char * str);
 
-#endif // TOOPZ_H
+/// Method which convert an expression to opz
+char * toOpz(const char * str);

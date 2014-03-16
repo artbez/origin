@@ -1,6 +1,2 @@
-#ifndef CALCULATEBYOPZ_H
-#define CALCULATEBYOPZ_H
-
+/// Method which calculate opz to integer number
 int calculateByOpz(const char * str);
-
-#endif // CALCULATEBYOPZ_H

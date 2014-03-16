@@ -1,6 +1,3 @@
-#ifndef LISTELEMENT_H
-#define LISTELEMENT_H
-
 #pragma once
 
 class ListElement
@@ -10,6 +7,7 @@ public:
     ListElement();
     int getValue();
     void takeValue(int value);
+    ///return the pointer to next element
     ListElement * getNext();
     void takeNext(ListElement * le);
     void printElement();
@@ -17,5 +15,3 @@ private:
     int value;
     ListElement * next = nullptr;
 };
-
-#endif // LISTELEMENT_H
