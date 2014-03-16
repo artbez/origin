@@ -2,6 +2,6 @@
 #define TOOPZ_H
 
 #include "linkedstack.h"
-char * toOpz(char * str);
+char * toOpz(const char * str);
 
 #endif // TOOPZ_H

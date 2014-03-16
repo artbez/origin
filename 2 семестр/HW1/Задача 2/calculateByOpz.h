@@ -1,6 +1,6 @@
 #ifndef CALCULATEBYOPZ_H
 #define CALCULATEBYOPZ_H
 
-int calculateByOpz(char * str);
+int calculateByOpz(const char * str);
 
 #endif // CALCULATEBYOPZ_H

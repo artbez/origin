@@ -1,9 +1,17 @@
 #include <iostream>
 #include "bublesorting.h"
 #include "quicksorting.h"
+#include "bublesorttest.h"
+#include "quicksorttest.h"
 
 int main()
 {
+    TestBubleSort tb;
+    QTest::qExec(&tb);
+
+    TestQuickSort tq;
+    QTest::qExec(&tq);
+
     const int length  = 8;
     int arr1[length] = {2, 5, 12, -1, 3, 2, 12, 3};
     BubleSorting bSorter;

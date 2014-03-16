@@ -2,9 +2,15 @@
 #include "linkedlist.h"
 #include "listonarray.h"
 #include <iostream>
+#include "testLinkedList.h"
+#include "testListOnArray.h"
 
 int main()
 {
+    TestingLinkedLists tl;
+    QTest::qExec(&tl);
+    TestingListOnArray ta;
+    QTest::qExec(&ta);
     //Список на указателях
     LinkedList * linkedList = new LinkedList();
     linkedList->insert(0, 5);

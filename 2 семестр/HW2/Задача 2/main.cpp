@@ -1,12 +1,16 @@
 #include "consolewriter.h"
 #include "filewriter.h"
 #include <iostream>
+#include "mainTests.h"
 
 using std::cin;
 using std::cout;
 
 int main()
 {
+    TestMain tm;
+    QTest::qExec(&tm);
+
     cout << "Enter an odd number > 0\n";
     int number = 0;
     cin >> number;
