@@ -1,6 +1,6 @@
 #include "bublesorting.h"
 
-void BubleSorting::sort(int * newArray, int length)
+void BubleSorting::sort(int *newArray, int length)
 {
     for (int i = 0; i < length; ++i)
     {
