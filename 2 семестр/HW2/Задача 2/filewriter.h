@@ -1,5 +1,3 @@
-#pragma once
-
 #include "writer.h"
 #include <fstream>
 

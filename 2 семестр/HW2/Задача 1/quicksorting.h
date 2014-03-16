@@ -1,4 +1,3 @@
-#pragma once
 #include "sorting.h"
 
 /// Class which can sort an array by QuickSort

@@ -1,5 +1,3 @@
-#pragma once
-
 #include "sorting.h"
 
 /// Class which can sort a matrix by BubleSort

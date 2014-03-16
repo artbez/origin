@@ -6,7 +6,7 @@
 using std::cin;
 using std::cout;
 
-int calculateByOpz(const char *str)
+int calculateByOpz(char * str)
 {
     const int size = 100;
     int lengthOfStr = strlen(str) - 1;

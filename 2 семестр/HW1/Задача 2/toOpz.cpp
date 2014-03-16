@@ -8,7 +8,7 @@ using std::cout;
 
 void addChar(int ch, char * answer, int &mainIndex);
 
-char *toOpz(const char *str)
+char *toOpz(char * str)
 {
     int lengthOfStr = strlen(str);
     LinkedStack * myStack = new LinkedStack();

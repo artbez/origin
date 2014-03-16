@@ -1,5 +1,3 @@
-#pragma once
-
 #include "writer.h"
 
 /// Class which can print a matrix as a spiral bypass to file

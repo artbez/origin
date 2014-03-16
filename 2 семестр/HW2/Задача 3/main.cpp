@@ -1,12 +1,8 @@
 #include <iostream>
 #include "bublesorting.h"
-#include "bublesorttest.h"
 
 int main()
 {
-    TestBubleSort tb;
-    QTest::qExec(&tb);
-
     int size = 0;
     std::cout << "Eneter a size of matrix\n";
     std::cin >> size;

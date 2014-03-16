@@ -1,4 +1,5 @@
-#pragma once
+#ifndef WRITER_H
+#define WRITER_H
 
 #include "interfacewriter.h"
 
@@ -15,3 +16,4 @@ protected:
     virtual void printElement(int el) = 0;
 };
 
+#endif // WRITER_H
