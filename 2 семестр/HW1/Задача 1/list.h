@@ -12,6 +12,7 @@ public:
     virtual void insert(int position, int value) = 0;
     virtual void deleteElement(int position) = 0;
     virtual void deleteList() = 0;
+    virtual int get(int index) = 0;
 };
 
 #endif // LIST_H

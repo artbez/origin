@@ -85,3 +85,22 @@ void LinkedList::deleteList()
         length--;
     }
 }
+
+int LinkedList::get(int index)
+{
+    ListElement * le = head;
+    while(le->getNext() != nullptr && index > 0)
+    {
+        index--;
+        le = le->getNext();
+    }
+
+    if (le->getNext() == nullptr || index > 0)
+    {
+        std::cerr << "Error. The index is no element with this index";
+        deleteList();
+        exit(0);
+    }
+
+    return le->getNext()->getValue();
+}

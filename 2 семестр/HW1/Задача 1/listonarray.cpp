@@ -81,3 +81,15 @@ void ListOnArray::deleteList()
     delete[] mainArray;
     currentLength = 0;
 }
+
+int ListOnArray::get(int index)
+{
+    if (index >= length())
+    {
+        std::cerr << "Error. The index is no element with this index";
+        deleteList();
+        exit(0);
+    }
+
+    return mainArray[index];
+}

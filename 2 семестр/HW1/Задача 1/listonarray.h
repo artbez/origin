@@ -13,6 +13,7 @@ public:
     void insert(int position, int value);
     void deleteElement(int position);
     void deleteList();
+    int get(int index);
 private:
     const int maxLength = 100;
     int * mainArray = new int[maxLength];

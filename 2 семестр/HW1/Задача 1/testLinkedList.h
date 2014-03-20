@@ -14,27 +14,45 @@ public:
 private slots:
     void intitTest()
     {
-        LinkedList ll;
+        ll = new LinkedList();
     }
 
     void lengthTest()
     {
-        LinkedList ll;
-        QVERIFY(ll.length() == 0);
+        QVERIFY(ll->length() == 0);
     }
 
     void insertTest()
     {
-        LinkedList ll;
-        ll.insert(0, 1);
-        QVERIFY2(ll.length() == 1, "Insert does not work");
+        ll->insert(0, 1);
+        QVERIFY2(ll->length() == 1, "Insert does not work");
     }
 
     void deleteElementTest()
     {
-        LinkedList ll;
-        ll.insert(0, 1);
-        ll.deleteElement(0);
-        QVERIFY(ll.length() == 0);
+        ll->deleteElement(0);
+        QVERIFY(ll->length() == 0);
     }
+
+    ///addition some elements
+    void insertElementsTest()
+    {
+        const int size = 10;
+        for (int i = 0; i < size; ++i)
+            ll->insert(i, i);
+        bool areEqual = true;
+        for (int i = 0; i < size; ++i)
+            if (ll->get(i) != i)
+                areEqual = false;
+        QVERIFY(areEqual);
+    }
+
+    void cleanTest()
+    {
+        delete ll;
+    }
+
+private:
+    LinkedList * ll;
+
 };

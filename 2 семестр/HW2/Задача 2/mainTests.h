@@ -15,42 +15,52 @@ public:
 private slots:
     void fileWriterInitTest()
     {
-        FileWriter fWriter("testFile");
+        fWriter = new FileWriter("testFile");
+    }
+
+    void consolWriterInitTest()
+    {
+        cWriter = new ConsoleWriter();
+    }
+
+    void createHelpingArray()
+    {
+        arr = new int * [number];
+        for (int i = 0; i < number; ++i)
+        {
+            arr[i] = new int[number];
+            for (int j = 0; j < number; ++j)
+                arr[i][j] = i * number + j;
+        }
+
     }
 
     void writeToConsoleTest()
     {
-        const int number = 7;
-        int ** arr = new int * [number];
-        for (int i = 0; i < number; ++i)
-        {
-            arr[i] = new int[number];
-            for (int j = 0; j < number; ++j)
-                arr[i][j] = i * number + j;
-        }
-        ConsoleWriter cWriter;
-        cWriter.write(arr, number);
-
-        for (int i = 0; i < number; ++i)
-            delete[] arr[i];
-        delete[] arr;
+        cWriter->write(arr, number);
     }
 
     void writeToFileTest()
     {
-        const int number = 7;
-        int ** arr = new int * [number];
-        for (int i = 0; i < number; ++i)
-        {
-            arr[i] = new int[number];
-            for (int j = 0; j < number; ++j)
-                arr[i][j] = i * number + j;
-        }
-        FileWriter fWriter("testFile");
-        fWriter.write(arr, number);
+        fWriter->write(arr, number);
+    }
 
+    void deleteHelpingArray()
+    {
         for (int i = 0; i < number; ++i)
             delete[] arr[i];
         delete[] arr;
     }
+
+    void clean()
+    {
+        delete fWriter;
+        delete cWriter;
+    }
+
+private:
+    FileWriter * fWriter;
+    ConsoleWriter * cWriter;
+    const int number = 7;
+    int ** arr;
 };

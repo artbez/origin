@@ -14,27 +14,47 @@ public:
 private slots:
     void intitTest()
     {
-        StackOnArray ll;
+        ll = new StackOnArray();
     }
 
     void lengthTest()
     {
-        StackOnArray ll;
-        QVERIFY(ll.length() == 0);
+        QVERIFY(ll->length() == 0);
     }
 
     void insertTest()
     {
-        StackOnArray ll;
-        ll.push(1);
-        QVERIFY2(ll.length() == 1, "Insert does not work");
+        ll->push(1);
+        QVERIFY2(ll->length() == 1, "Insert does not work");
     }
 
     void deleteElementTest()
     {
-        StackOnArray ll;
-        ll.push(1);
-        ll.pop();
-        QVERIFY(ll.length() == 0);
+        ll->pop();
+        QVERIFY(ll->length() == 0);
     }
+
+    ///addition some elements
+    void insertElementsTest()
+    {
+        const int size = 10;
+        for (int i = 0; i < size; ++i)
+            ll->push(i);
+        bool areEqual = true;
+        for (int i = 0; i < size; ++i)
+        {
+            if (ll->getFirst() != size - i - 1)
+                areEqual = false;
+            ll->pop();
+        }
+        QVERIFY(areEqual);
+    }
+
+    void claen()
+    {
+        delete ll;
+    }
+
+private:
+    StackOnArray * ll;
 };

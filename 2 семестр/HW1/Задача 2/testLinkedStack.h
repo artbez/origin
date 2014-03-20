@@ -14,27 +14,48 @@ public:
 private slots:
     void intitTest()
     {
-        LinkedStack ll;
+        ll = new LinkedStack();
     }
 
     void lengthTest()
     {
-        LinkedStack ll;
-        QVERIFY(ll.length() == 0);
+        QVERIFY(ll->length() == 0);
     }
 
     void insertTest()
     {
-        LinkedStack ll;
-        ll.push(1);
-        QVERIFY2(ll.length() == 1, "Push does not work");
+        ll->push(1);
+        QVERIFY2(ll->length() == 1, "Push does not work");
     }
 
     void deleteElementTest()
     {
-        LinkedStack ll;
-        ll.push(1);
-        ll.pop();
-        QVERIFY(ll.length() == 0);
+        ll->pop();
+        QVERIFY(ll->length() == 0);
     }
+
+    ///addition some elements
+    void insertElementsTest()
+    {
+        const int size = 10;
+        for (int i = 0; i < size; ++i)
+            ll->push(i);
+        bool areEqual = true;
+        for (int i = 0; i < size; ++i)
+        {
+            if (ll->getFirst() != size - i - 1)
+                areEqual = false;
+            ll->pop();
+        }
+        QVERIFY(areEqual);
+    }
+
+    void claen()
+    {
+        delete ll;
+    }
+
+private:
+    LinkedStack * ll;
+
 };

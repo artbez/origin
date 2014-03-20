@@ -14,6 +14,7 @@ public:
     void insert(int position, int value);
     void deleteElement(int position);
     void deleteList();
+    int get(int index);
 private:
     ListElement * head = new ListElement(-1);
 };
