@@ -12,7 +12,7 @@ public:
     explicit TestingLinkedLists(QObject *parent = 0) : QObject(parent){}
 
 private slots:
-    void intitTest()
+    void initTestCase()
     {
         ll = new LinkedList();
     }
@@ -29,10 +29,21 @@ private slots:
         QVERIFY2(ll->length() == 1, "Insert does not work");
     }
 
+    ///find an element
+    void findTest()
+    {
+        QString qStr = "01234";
+        ll->insert(0, qStr);
+        int index = ll->find(qStr);
+        QVERIFY2(index == 0, "The index is " + index);
+    }
+
     void deleteElementTest()
     {
+        QString str = "222";
+        ll->insert(0, str);
         ll->deleteElement(0);
-        QVERIFY(ll->length() == 0);
+        QVERIFY(ll->find(str) == -1);
     }
 
     ///addition some elements
@@ -56,15 +67,7 @@ private slots:
         QVERIFY(areEqual);
     }
 
-    ///find an element
-    void findTest()
-    {
-        QString qStr = "01234";
-        int index = ll->find(qStr);
-        QVERIFY2(index == 4, "The index is " + index);
-    }
-
-    void cleanTest()
+    void cleanupTestCase()
     {
         delete ll;
     }

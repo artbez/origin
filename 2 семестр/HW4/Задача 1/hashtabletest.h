@@ -12,7 +12,7 @@ public:
     explicit TestingHashTable(QObject *parent = 0) : QObject(parent){}
 
 private slots:
-    void initTest()
+    void initTestCase()
     {
         myHash = new MyHashTable(curHash, size);
     }
@@ -49,7 +49,7 @@ private slots:
         QVERIFY(firstValue != secondValue);
     }
 
-    void deleteTableTest()
+    void cleanupTestCase()
     {
         delete myHash;
     }
