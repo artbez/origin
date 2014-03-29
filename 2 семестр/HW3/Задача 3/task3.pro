@@ -3,7 +3,7 @@
 # Project created by QtCreator 2014-03-11T00:02:33
 #
 #-------------------------------------------------
-
+QT += testlib
 QMAKE_CXXFLAGS += -std=c++0x
 
 QT       += core gui
@@ -26,6 +26,8 @@ HEADERS  += mainwindow.h \
     stack.h \
     linkedstack.h \
     calculateByOpz.h \
-    listelement.h
+    listelement.h \
+    testOpz.h \
+    testLinkedStack.h
 
 FORMS    += mainwindow.ui

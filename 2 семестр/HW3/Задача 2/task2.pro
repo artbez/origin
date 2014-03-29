@@ -3,7 +3,7 @@
 # Project created by QtCreator 2014-03-09T18:40:04
 #
 #-------------------------------------------------
-
+QT += testlib
 QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
@@ -17,6 +17,7 @@ SOURCES += main.cpp\
     calculator.cpp
 
 HEADERS  += mainwindow.h \
-    calculator.h
+    calculator.h \
+    calculatortest.h
 
 FORMS    += mainwindow.ui
