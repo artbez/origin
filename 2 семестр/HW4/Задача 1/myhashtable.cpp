@@ -79,6 +79,7 @@ int MyHashTable::biggestConflitSize()
 
 void MyHashTable::selectHashFunction(int number, int size)
 {
+    delete hashF;
     hashF = new HashFunction(number, size);
     LinkedList * newHashArray = new LinkedList[size];
     for (int i = 0; i < this->size; ++i)
@@ -91,7 +92,7 @@ void MyHashTable::selectHashFunction(int number, int size)
             le = le->getNext();
         }
     }
-    delete[] hashArray;
+    deleteHashTable();
     hashArray = newHashArray;
 }
 
