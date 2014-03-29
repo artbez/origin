@@ -60,7 +60,6 @@ int main()
     const char * newStr = str;
     cout << calculateByOpz(toOpz( newStr));
     delete[] str;
-    delete[] newStr;
     return 0;
 }
 
