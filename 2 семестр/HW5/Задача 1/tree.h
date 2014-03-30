@@ -1,3 +1,4 @@
+#pragma once
 #include <QString>
 #include "treeinterface.h"
 #include "sign.h"

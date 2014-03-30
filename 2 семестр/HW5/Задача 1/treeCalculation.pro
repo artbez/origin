@@ -24,7 +24,8 @@ SOURCES += main.cpp \
 HEADERS += \
     treeinterface.h \
     tree.h \
-    sign.h
+    sign.h \
+    treecalculationtest.h
 
 OTHER_FILES += \
     file.txt

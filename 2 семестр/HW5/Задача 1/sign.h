@@ -1,3 +1,4 @@
+#pragma once
 /// operation
 class Sign
 {
