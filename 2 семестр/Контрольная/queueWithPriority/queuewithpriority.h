@@ -34,7 +34,6 @@ private:
                 delete next;
         }
 
-        ListElement();
         Pair value;
         ListElement * next = nullptr;
     };
