@@ -2,31 +2,19 @@
 #include <iostream>
 #include "myerror.h"
 
-void UniqueList::addToUniqueList(int position, int value)
+void UniqueList::addToUniqueList(int position, int value) throw (MyError::ExceptionOfAdding)
 {
-    try
-    {
-        if (contains(value) != -1)
-            MyError::addingError();
-        insert(position, value);
-    }
-    catch(MyError::ExceptionOfAdding &)
-    {
-        std::cout << "This element is already exists\n";
-    }
+    if (contains(value) != -1)
+        throw MyError::ExceptionOfAdding();
+
+    insert(position, value);
 }
 
-void UniqueList::deleteFromUniqueList(int value)
+void UniqueList::deleteFromUniqueList(int value) throw (MyError::ExceptionOfDeleting)
 {
-    try
-    {
-        int indexOfDeletingElem = contains(value);
-        if (indexOfDeletingElem == -1)
-            MyError::deletingError();
-        deleteElement(indexOfDeletingElem);
-    }
-    catch(MyError::ExceptionOfDeleting &)
-    {
-        std::cout << "There is no this element in the list\n";
-    }
+    int indexOfDeletingElem = contains(value);
+    if (indexOfDeletingElem == -1)
+        throw MyError::ExceptionOfDeleting();
+
+    deleteElement(indexOfDeletingElem);
 }
