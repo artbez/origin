@@ -21,7 +21,7 @@ private slots:
     void isExistTest()
     {
         mySet.addElement(42);
-        QVERIFY(mySet.isExistElement(42) && !mySet.isExistElement(43));
+        QVERIFY(mySet.isExistElement(42));
     }
 
     void deleteElementTest()
@@ -37,6 +37,7 @@ private slots:
         newSet.addElement(1);
         newSet.addElement(2);
         mySet.addElement(1);
+        mySet.deleteElement(2);
         mySet.intersectWithSet(newSet);
         QVERIFY(mySet.isExistElement(1) && !mySet.isExistElement(2));
     }

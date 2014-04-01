@@ -1,6 +1,6 @@
 #pragma once
-#include <list>
 #include <iostream>
+#include <QList>
 
 template<typename T>
 class Set
@@ -9,30 +9,30 @@ public:
     /// addition element to a set
     void addElement(T element);
     /// check is this element in set or not
-    bool isExistElement(T element);
+    bool isExistElement(T element) const;
     /// delete this element form the set if it's exist
     void deleteElement(T element);
     /// make this to intersection if this set with an other set
-    void intersectWithSet(Set<T> anotherSet);
+    void intersectWithSet(const Set<T> &anotherSet);
     /// make this to union of this set with an other set
-    void unionWithSet(Set<T> anotherSet);
+    void unionWithSet(const Set<T> &anotherSet);
     ///  print set
     void printSet();
     /// return set as a list
-    std::list<T> getList();
+    QList<T> toList() const;
 private:
-    std::list<T> myList;
+    QList<T> myList;
 };
 
 template<typename T>
 void Set<T>::addElement(T element)
 {
     if (!isExistElement(element))
-            myList.push_back(element);
+            myList.append(element);
 }
 
 template<typename T>
-bool Set<T>::isExistElement(T element)
+bool Set<T>::isExistElement(T element) const
 {
     for (const T &el : myList)
         if (el == element)
@@ -44,23 +44,23 @@ template<typename T>
 void Set<T>::deleteElement(T element)
 {
     if (isExistElement(element))
-        myList.remove(element);
+        myList.removeOne(element);
 }
 
 template<typename T>
-void Set<T>::intersectWithSet(Set<T> anotherSet)
+void Set<T>::intersectWithSet(const Set<T> &anotherSet)
 {
-    std::list<T> newList;
+    QList<T> newList;
     for (const T &el : myList)
         if (anotherSet.isExistElement(el))
-            newList.push_back(el);
+            newList.append(el);
     myList = newList;
 }
 
 template<typename T>
-void Set<T>::unionWithSet(Set<T> anotherSet)
+void Set<T>::unionWithSet(const Set<T> &anotherSet)
 {
-    std::list<T> newList = anotherSet.getList();
+    QList<T> newList = anotherSet.toList();
     for (const T &el : newList)
         addElement(el);
 }
@@ -75,7 +75,7 @@ void Set<T>::printSet()
 }
 
 template<typename T>
-std::list<T> Set<T>::getList()
+QList<T> Set<T>::toList() const
 {
     return myList;
 }
