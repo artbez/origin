@@ -37,6 +37,10 @@ bool MyHashTable::contains(QString &qStr)
 
 void MyHashTable::deleteHashTable()
 {
+    for (int i = 0; i < size; ++i)
+    {
+        hashArray[i].~LinkedList();
+    }
     delete[] hashArray;
 }
 

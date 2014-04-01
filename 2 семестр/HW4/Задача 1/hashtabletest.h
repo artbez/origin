@@ -58,7 +58,7 @@ private slots:
 
 
 private:
-    const int size = 7777;
+    const int size = 777;
     int curHash = 0;
     MyHashTable * myHash;
 };
