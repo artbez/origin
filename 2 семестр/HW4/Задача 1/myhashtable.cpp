@@ -37,10 +37,6 @@ bool MyHashTable::contains(QString &qStr)
 
 void MyHashTable::deleteHashTable()
 {
-    for (int i = 0; i < size; ++i)
-    {
-        hashArray[i].~LinkedList();
-    }
     delete[] hashArray;
 }
 
@@ -88,7 +84,7 @@ void MyHashTable::selectHashFunction(int number, int size)
     LinkedList * newHashArray = new LinkedList[size];
     for (int i = 0; i < this->size; ++i)
     {
-        ListElement * le = new ListElement();
+        ListElement * le = hashArray[i].getHead();
         while (le->getNext() != nullptr)
         {
             QString curStr = le->getNext()->getValue();

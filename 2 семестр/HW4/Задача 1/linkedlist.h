@@ -14,6 +14,7 @@ public:
     void deleteList();
     int find(QString &qStr);
     QString get(int index);
+    ListElement * getHead();
 private:
     ListElement * head = new ListElement();
 };

@@ -48,7 +48,7 @@ private slots:
         int firstValue = myHash->getHash(str);
         myHash->selectHashFunction(1, 3333);
         int secondValue = myHash->getHash(str);
-        QVERIFY(firstValue != secondValue);
+        QVERIFY((firstValue != secondValue) && (myHash->contains(str)));
     }
 
     void cleanupTestCase()

@@ -119,3 +119,8 @@ QString LinkedList::get(int index)
 
     return le->getNext()->getValue();
 }
+
+ListElement *LinkedList::getHead()
+{
+    return head;
+}
