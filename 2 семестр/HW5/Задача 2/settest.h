@@ -20,12 +20,14 @@ private slots:
 
     void isExistTest()
     {
+        mySet.clearSet();
         mySet.addElement(42);
-        QVERIFY(mySet.isExistElement(42));
+        QVERIFY(mySet.isExistElement(42) && !mySet.isExistElement(43));
     }
 
     void deleteElementTest()
     {
+        mySet.clearSet();
         mySet.addElement(666);
         mySet.deleteElement(666);
         QVERIFY(!mySet.isExistElement(666));
@@ -33,6 +35,7 @@ private slots:
 
     void intersectWithSetTest()
     {
+        mySet.clearSet();
         Set<int> newSet;
         newSet.addElement(1);
         newSet.addElement(2);
@@ -44,6 +47,7 @@ private slots:
 
     void unionWithSetTest()
     {
+        mySet.clearSet();
         Set<int> newSet;
         newSet.addElement(3);
         newSet.addElement(4);

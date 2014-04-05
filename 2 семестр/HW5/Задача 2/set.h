@@ -18,6 +18,8 @@ public:
     void unionWithSet(const Set<T> &anotherSet);
     ///  print set
     void printSet();
+    /// clear all fields
+    void clearSet();
     /// return set as a list
     QList<T> toList() const;
 private:
@@ -72,6 +74,12 @@ void Set<T>::printSet()
     {
         std::cout << el << " ";
     }
+}
+
+template<typename T>
+void Set<T>::clearSet()
+{
+    myList.clear();
 }
 
 template<typename T>
