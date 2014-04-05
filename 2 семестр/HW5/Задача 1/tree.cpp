@@ -1,81 +1,57 @@
 #include "tree.h"
+#include "sum.h"
+#include "mul.h"
+#include "neg.h"
+#include "dev.h"
+#include "num.h"
 #include <iostream>
 
-Tree::Tree(QString qStr)
+Tree::Tree(const QString& qStr)
 {
-    toTree(qStr);
+    int index = 0;
+    root = toTree(qStr, index);
 }
 
 Tree::~Tree()
 {
-    deleteTree();
+    delete root;
 }
 
 void Tree::printTree()
 {
-    root->printTreeNode();
+    root->print();
 }
 
 int Tree::countTree()
 {
-    return root->countTreeNode();
+    return root->count();
 }
 
-void Tree::deleteTree()
+Node *Tree::toTree(const QString& qStr, int& index)
 {
-    delete root;
-}
-
-void Tree::TreeNode::printTreeNode()
-{
-    if (sign == nullptr)
-        std::cout << value;
-    else
-    {
-        std::cout << "(";
-        sign->printSign();
-        std::cout << " ";
-        leftChild->printTreeNode();
-        std::cout << " ";
-        rightChild->printTreeNode();
-        std::cout << ")";
-    }
-}
-
-void Tree::toTree(QString qStr)
-{
-    root = new TreeNode();
-    int index = 0;
-    root->createL(qStr, index);
-}
-
-Tree::TreeNode::~TreeNode()
-{
-    deleteTreeNode();
-}
-
-void Tree::TreeNode::deleteTreeNode()
-{
-    if (leftChild != nullptr)
-        delete leftChild;
-    if (rightChild != nullptr)
-        delete rightChild;
-    if (sign != nullptr)
-        delete sign;
-}
-
-void Tree::TreeNode::createL(QString qStr, int &index)
-{
+    Node *newNode;
     while((qStr.at(index).toLatin1() == ' ') || (qStr.at(index).toLatin1() == ')')) index++;
     if (qStr.at(index).toLatin1() == '(')
     {
         index++;
-        sign = new Sign(qStr.at(index).toLatin1());
+        switch(qStr.at(index).toLatin1())
+        {
+        case '+':
+            newNode = new Sum();
+            break;
+        case '-':
+            newNode = new Neg();
+            break;
+        case '*':
+            newNode = new Mul();
+            break;
+        case '/':
+            newNode = new Dev();
+            break;
+        }
         index++;
-        leftChild = new TreeNode();
-        rightChild = new TreeNode();
-        leftChild->createL(qStr, index);
-        rightChild->createL(qStr, index);
+        newNode->setLeftChild(toTree(qStr, index));
+        newNode->setRightChild(toTree(qStr, index));
     }
     else
     {
@@ -93,35 +69,7 @@ void Tree::TreeNode::createL(QString qStr, int &index)
             index++;
         }
         index++;
-        value = val;
+        newNode = new Num(val);
     }
-}
-
-int Tree::TreeNode::countTreeNode()
-{
-    if (sign == nullptr)
-        return value;
-    else
-    {
-        switch (sign->getValue())
-        {
-        case '+':	return leftChild->countTreeNode() + rightChild->countTreeNode(); break;
-        case '*':	return leftChild->countTreeNode() * rightChild->countTreeNode(); break;
-        case '-':	return leftChild->countTreeNode() - rightChild->countTreeNode(); break;
-        case '/':
-        {
-            int second = rightChild->countTreeNode();
-            if (second != 0)
-                return leftChild->countTreeNode() / second;
-                else
-                {
-                    std::cerr << "Division by zero";
-                    exit(0);
-                }
-                break;
-            }
-         }
-         }
-
-    return 0;
+    return newNode;
 }

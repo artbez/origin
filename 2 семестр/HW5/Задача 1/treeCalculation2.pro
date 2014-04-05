@@ -1,6 +1,6 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2014-03-29T21:46:52
+# Project created by QtCreator 2014-04-05T19:12:08
 #
 #-------------------------------------------------
 
@@ -10,7 +10,7 @@ QT       += core
 
 QT       -= gui
 
-TARGET = treeCalculation
+TARGET = treeCalculation2
 CONFIG   += console
 CONFIG   -= app_bundle
 
@@ -19,13 +19,22 @@ TEMPLATE = app
 
 SOURCES += main.cpp \
     tree.cpp \
-    sign.cpp
+    node.cpp \
+    dev.cpp \
+    mul.cpp \
+    neg.cpp \
+    num.cpp \
+    sum.cpp
 
 HEADERS += \
-    treeinterface.h \
+    node.h \
+    sum.h \
+    neg.h \
+    mul.h \
+    dev.h \
     tree.h \
-    sign.h \
-    treecalculationtest.h
+    num.h \
+    testingtree.h
 
 OTHER_FILES += \
     file.txt
