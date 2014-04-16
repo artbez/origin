@@ -51,7 +51,7 @@ private slots:
         QVERIFY(areEqual);
     }
 
-    void claenup()
+    void cleanup()
     {
         delete ll;
     }
