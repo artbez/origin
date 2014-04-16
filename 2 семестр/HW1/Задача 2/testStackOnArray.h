@@ -12,7 +12,7 @@ public:
     explicit TestingStackOnArray(QObject *parent = 0) : QObject(parent){}
 
 private slots:
-    void intitTestCase()
+    void init()
     {
         ll = new StackOnArray();
     }
@@ -30,6 +30,7 @@ private slots:
 
     void deleteElementTest()
     {
+        ll->push(1);
         ll->pop();
         QVERIFY(ll->length() == 0);
     }
@@ -50,7 +51,7 @@ private slots:
         QVERIFY(areEqual);
     }
 
-    void claenupTestCase()
+    void cleanup()
     {
         delete ll;
     }

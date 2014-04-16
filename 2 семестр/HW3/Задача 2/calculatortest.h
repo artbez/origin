@@ -12,7 +12,7 @@ public:
     explicit TestingCalculator(QObject *parent = 0) : QObject(parent){}
 
 private slots:
-    void initTestCase()
+    void init()
     {
         calc = new Calculator();
     }
@@ -36,7 +36,7 @@ private slots:
     {
         QVERIFY(calc->calculate(12, 0, '/') == "Error");
     }
-    void cleanupTestCase()
+    void cleanup()
     {
         delete calc;
     }

@@ -12,7 +12,7 @@ public:
     explicit TestingLinkedLists(QObject *parent = 0) : QObject(parent){}
 
 private slots:
-    void initTestCase()
+    void init()
     {
         ll = new LinkedList();
     }
@@ -30,6 +30,7 @@ private slots:
 
     void deleteElementTest()
     {
+        ll->insert(0, 1);
         ll->deleteElement(0);
         QVERIFY(ll->length() == 0);
     }
@@ -47,7 +48,7 @@ private slots:
         QVERIFY(areEqual);
     }
 
-    void cleanupTestCase()
+    void cleanup()
     {
         delete ll;
     }

@@ -13,7 +13,7 @@ public:
     explicit TestMain(QObject *parent = 0) : QObject(parent){}
 
 private slots:
-    void initTestCase()
+    void init()
     {
         fWriter = new FileWriter("testFile");
         cWriter = new ConsoleWriter();
@@ -48,7 +48,7 @@ private slots:
         delete[] arr;
     }
 
-    void cleanupTestCase()
+    void cleanup()
     {
         delete fWriter;
         delete cWriter;

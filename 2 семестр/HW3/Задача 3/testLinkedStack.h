@@ -12,7 +12,7 @@ public:
     explicit TestingLinkedStack(QObject *parent = 0) : QObject(parent){}
 
 private slots:
-    void initTestCase()
+    void init()
     {
         ll = new LinkedStack();
     }
@@ -30,6 +30,7 @@ private slots:
 
     void deleteElementTest()
     {
+        ll->push(1);
         ll->pop();
         QVERIFY(ll->length() == 0);
     }
@@ -50,7 +51,7 @@ private slots:
         QVERIFY(areEqual);
     }
 
-    void claenupTestCase()
+    void claenup()
     {
         delete ll;
     }

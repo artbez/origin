@@ -35,7 +35,7 @@ private slots:
                 predicResult[i][j] = i * size + j;
 
 
-        QVERIFY(ArraysEqual(arr, predicResult, size));
+        QVERIFY(arraysEqual(arr, predicResult, size));
         for (int i = 0; i < size; ++i)
         {
             delete[] arr[i];
@@ -47,7 +47,7 @@ private slots:
     }
 
 private:
-    bool ArraysEqual(int ** firstArray, int ** secondArray, int length)
+    bool arraysEqual(int ** firstArray, int ** secondArray, int length)
     {
         for (int i = 0; i < length; ++i)
             for (int j = 0; j < length; ++j)
