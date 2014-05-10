@@ -3,6 +3,7 @@
 #include <QObject>
 #include <QtTest/QTest>
 #include "sharedpointer.h"
+#include <iostream>
 
 class SharedPointerTest: public QObject
 {
@@ -15,49 +16,42 @@ private slots:
 
     void init()
     {
-        value = new int(intValue);
-        sh = new SharedPointer<int>(value);
+         value = new int(intValue);
     }
 
     void constructorOfCopyingTest()
     {
-        newSh = new SharedPointer<int>(*sh);
-        QVERIFY(*(newSh->getPointer()) == intValue);
-        delete newSh;
+        SharedPointer<int> sh(value);
+        SharedPointer<int> newSh(sh);
+        QVERIFY((*newSh.getPointer()) == intValue);
     }
 
     void operatorEqualTest()
     {
+        SharedPointer<int> sh(value);
         int * newValue = new int(intValue + 42);
-        newSh = new SharedPointer<int>(newValue);
-        *newSh = *sh;
-        QVERIFY(*(newSh->getPointer()) == intValue);
-        delete newSh;
+        SharedPointer<int> newSh(newValue);
+        newSh = sh;
+        QVERIFY((*newSh.getPointer()) == intValue);
     }
 
     void countLinks()
     { 
-        newSh = new SharedPointer<int>(*sh);
-        QVERIFY(sh->getCount() == 2);
-        delete newSh;
+        SharedPointer<int> sh(value);
+        SharedPointer<int> newSh(sh);
+        QVERIFY(sh.getCount() == 2);
     }
 
     void deleteTest()
     {
-        newSh = new SharedPointer<int>(*sh);
-        delete newSh;
-        int answer = sh->getCount();
-        QVERIFY(answer == 1 && (*(sh->getPointer()) == intValue));
-    }
-
-    void cleanup()
-    {
-        delete sh;
+        SharedPointer<int> sh(value);
+        SharedPointer<int> newSh(sh);
+        newSh.deleteSharedPointer();
+        int answer = sh.getCount();
+        QVERIFY(answer == 1 && ((*sh.getPointer()) == intValue));
     }
 
 private:
     const int intValue = 3;
     int * value;
-    SharedPointer<int> * sh;
-    SharedPointer<int> * newSh;
 };
