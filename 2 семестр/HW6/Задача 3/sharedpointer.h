@@ -47,7 +47,7 @@ SharedPointer<T>::SharedPointer(SharedPointer<T> &sp)
 template <typename T>
 void SharedPointer<T>::operator=(SharedPointer<T> &sp)
 {
-    if (sPointer->count != 0)
+    if (sPointer->count == 0)
         deleteSPointer();
 
     sp.getSPointer()->count++;
