@@ -54,6 +54,7 @@ void MainWindow::newGame()
 
 void MainWindow::wasClicked(int index)
 {
+
     if (buttons[index]->text() != " ")
         return;
     QString newValue = currentGame->getNeededString(index);

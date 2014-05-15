@@ -2,14 +2,7 @@
 
 void Game::nextPlayer()
 {
-    currentPlayer++;
-    currentPlayer %= 2;
-}
-
-Game::Game()
-{
-    currentPlayer = 0;
-    numberToWin = 3;
+    currentPlayer = 1 - currentPlayer;
 }
 
 void Game::setCells(int size)
@@ -17,7 +10,7 @@ void Game::setCells(int size)
     if (!cells.isEmpty())
         cells.clear();
     for (int i = 0; i < size * size; ++i)
-        cells.append(Nothing);
+        cells.append(nothing);
     numberOfCellsInLine = size;
 }
 
@@ -27,11 +20,11 @@ QString Game::getNeededString(int index)
     switch(currentPlayer)
     {
     case 0:
-        cells[index] = Cross;
+        cells[index] = cross;
         result = "X";
         break;
     case 1:
-        cells[index] = Zero;
+        cells[index] = zero;
         result = "0";
         break;
     }
@@ -41,23 +34,23 @@ QString Game::getNeededString(int index)
 bool Game::noNothing()
 {
     for (int i = 0; i < numberOfCellsInLine * numberOfCellsInLine; ++i)
-        if (cells[i] == Nothing)
+        if (cells[i] == nothing)
             return false;
     return true;
 }
 
-QString Game::stringFromState(enum states state)
+QString Game::stringFromState(States state)
 {
     QString result = "";
     switch(state)
     {
-    case Nothing:
+    case nothing:
         result = " ";
         break;
-    case Cross:
+    case cross:
         result = "X";
         break;
-    case Zero:
+    case zero:
         result = "0";
         break;
     }
@@ -82,7 +75,7 @@ bool Game::checkLines(int index)
     int firstIndex = index % numberOfCellsInLine;
     int secondIndex = index / numberOfCellsInLine;
     bool res = true;
-    states current = cells[index];
+    States current = cells[index];
 
     /// checks all possible vertical combinations
     for (int i = 0; i < numberToWin; ++i)
@@ -118,7 +111,7 @@ bool Game::checkLines(int index)
 bool Game::checkDiagonals(int index)
 {
     bool res = true;
-    states current = cells[index];
+    States current = cells[index];
 
     int firstIndex = index % numberOfCellsInLine;
     int secondIndex = index / numberOfCellsInLine;

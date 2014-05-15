@@ -7,7 +7,7 @@ class Game
 {
 
 public:
-    Game();
+    Game(): numberToWin(3), currentPlayer(0) {}
     /// gets number of how many cells need to be crossed for win
     void setNumberToWin(int newNumberToWin)
     {
@@ -22,10 +22,10 @@ public:
 
 private:
     /// all cells states
-    enum states { Nothing, Cross, Zero };
+    enum States { nothing, cross, zero };
     /// checks is there a possibility to do next move
     bool noNothing();
-    QString stringFromState(enum states state);
+    QString stringFromState(States state);
     /// checks all possible vertical and horizontal combinations
     bool checkLines(int index);
     /// checks all possible diagonal combinations
@@ -34,5 +34,5 @@ private:
     int numberToWin;
     int numberOfCellsInLine;
     int currentPlayer;
-    QVector<states> cells;
+    QVector<States> cells;
 };
