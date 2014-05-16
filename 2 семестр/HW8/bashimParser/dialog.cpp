@@ -40,25 +40,37 @@ void Dialog::buttonNextWasClicked()
 
 void Dialog::buttonPlusWasClicked()
 {
-    QString qStr = id.at(currentIndexOfElements).toPlainText().mid(1);
+    QString qStr = "http://bash.im/quote/" + id.at(currentIndexOfElements).toPlainText().mid(1);
     clickUrl = new QWebView();
-   // QUrl url("http://bash.im/quote/" + qStr + "/rulez");
-   // QNetworkAccessManager *nam = new QNetworkAccessManager(this);
-   // nam->get(QNetworkRequest(url));
+    QUrl url(qStr);
+    QNetworkRequest networkRequest(url);
+    networkRequest.setHeader(QNetworkRequest::ContentTypeHeader,"application/x-www-form-urlencoded");
+    QNetworkAccessManager *nam = new QNetworkAccessManager(this);
+    nam->post(networkRequest, "/rulez");
     changeUrl(1);
 }
 
 void Dialog::buttonMinusWasClicked()
 {
-    QString qStr = id.at(currentIndexOfElements).toPlainText().mid(1);
-   // QUrl("http://bash.im/quote/" + qStr + "/sux").isValid();
+    QString qStr = "http://bash.im/quote/" + id.at(currentIndexOfElements).toPlainText().mid(1);
+    clickUrl = new QWebView();
+    QUrl url(qStr);
+    QNetworkRequest networkRequest(url);
+    networkRequest.setHeader(QNetworkRequest::ContentTypeHeader,"application/x-www-form-urlencoded");
+    QNetworkAccessManager *nam = new QNetworkAccessManager(this);
+    nam->post(networkRequest, "/sux");
     changeUrl(-1);
 }
 
 void Dialog::buttonBayanWasClicked()
 {
-    QString qStr = id.at(currentIndexOfElements).toPlainText().mid(1);
-//    QUrl("http://bash.im/quote/" + qStr + "/rulez").isValid();
+    QString qStr = "http://bash.im/quote/" + id.at(currentIndexOfElements).toPlainText().mid(1);
+    clickUrl = new QWebView();
+    QUrl url(qStr);
+    QNetworkRequest networkRequest(url);
+    networkRequest.setHeader(QNetworkRequest::ContentTypeHeader,"application/x-www-form-urlencoded");
+    QNetworkAccessManager *nam = new QNetworkAccessManager(this);
+    nam->post(networkRequest, "/bayan");
 }
 
 void Dialog::processReply()
