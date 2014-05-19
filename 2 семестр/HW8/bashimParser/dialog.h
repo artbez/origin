@@ -37,7 +37,6 @@ public slots:
 private:
     void changeUrl(int k);
     QWebView *view;
-    QWebView *clickUrl;
     /// quotes from bash.im
     QWebElementCollection elements;
     /// ratings from bash.

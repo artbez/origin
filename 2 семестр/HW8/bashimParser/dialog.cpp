@@ -32,8 +32,7 @@ void Dialog::buttonNextWasClicked()
     /// writes next quote
     if (currentIndexOfElements == lengthOfElements)
         currentIndexOfElements = 0;
-    ui->textEdit->setText(elements.at(currentIndexOfElements).toPlainText() + "\n\n"
-                          + id.at(currentIndexOfElements).toPlainText().mid(1));
+    ui->textEdit->setText(elements.at(currentIndexOfElements).toPlainText() + "\n\n");
     ui->ratingEdit->setText(ratings.at(currentIndexOfElements).toPlainText());
     currentIndexOfElements++;
 }
@@ -41,7 +40,6 @@ void Dialog::buttonNextWasClicked()
 void Dialog::buttonPlusWasClicked()
 {
     QString qStr = "http://bash.im/quote/" + id.at(currentIndexOfElements).toPlainText().mid(1);
-    clickUrl = new QWebView();
     QUrl url(qStr);
     QNetworkRequest networkRequest(url);
     networkRequest.setHeader(QNetworkRequest::ContentTypeHeader,"application/x-www-form-urlencoded");
@@ -53,7 +51,6 @@ void Dialog::buttonPlusWasClicked()
 void Dialog::buttonMinusWasClicked()
 {
     QString qStr = "http://bash.im/quote/" + id.at(currentIndexOfElements).toPlainText().mid(1);
-    clickUrl = new QWebView();
     QUrl url(qStr);
     QNetworkRequest networkRequest(url);
     networkRequest.setHeader(QNetworkRequest::ContentTypeHeader,"application/x-www-form-urlencoded");
@@ -65,7 +62,6 @@ void Dialog::buttonMinusWasClicked()
 void Dialog::buttonBayanWasClicked()
 {
     QString qStr = "http://bash.im/quote/" + id.at(currentIndexOfElements).toPlainText().mid(1);
-    clickUrl = new QWebView();
     QUrl url(qStr);
     QNetworkRequest networkRequest(url);
     networkRequest.setHeader(QNetworkRequest::ContentTypeHeader,"application/x-www-form-urlencoded");
