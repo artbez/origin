@@ -8,6 +8,7 @@
 class HashFunc
 {
 public:
+    virtual ~HashFunc(){}
     /**
     сортировка
     @param s - указатель на первый элемент строки

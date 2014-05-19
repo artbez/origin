@@ -1,57 +1,54 @@
 #include "table.h"
 #include <stdio.h>
 
-Table::Table()
+Table::Table() : size(500), function(new Func1)
 {
-    size = 500;
-    m = new Node *[size];
+    matrix = new Node *[size];
     for (int i = 0; i < size; i++)
-        m[i] = NULL;
-    function = new Func1;
+        matrix[i] = NULL;
 }
 
 Table::~Table()
 {
     for (int i = 0; i < size; i++)
-    {
-        while (m[i] != NULL)
+        while (matrix[i] != NULL)
         {
-            Node *tmp = m[i];
-            m[i] = m[i]->next;
+            Node *tmp = matrix[i];
+            matrix[i] = matrix[i]->next;
             delete tmp;
         }
-    }
-    delete[] m;
+
+    delete[] matrix;
 
 }
 
 void Table::add(char *s)
 {
+    if (exist(s))
+        return;
     int key = function->hash(s, size);
     Node *tmp = new Node;
     strcpy(tmp->str, s);
-    tmp->next = m[key];
-    m[key] = tmp;
+    tmp->next = matrix[key];
+    matrix[key] = tmp;
 }
 
 void Table::del(char *s)
 {
     int key = function->hash(s, size);
-    if (m[key] == NULL)
-    {}
-    else if (strcmp(m[key]->str, s) == 0)
+    if (matrix[key] == NULL)
+        return;
+    if (strcmp(matrix[key]->str, s) == 0)
     {
-        Node *tmp = m[key];
-        m[key] = m[key]->next;
-        delete tmp->next;
+        Node *tmp = matrix[key];
+        matrix[key] = matrix[key]->next;
+        delete tmp;
     }
     else
     {
-        Node *tmp = m[key];
-        while (strcmp(tmp->next->str, s) != 0 && tmp->next != NULL)
-        {
+        Node *tmp = matrix[key];
+        while (tmp->next != NULL && strcmp(tmp->next->str, s) != 0)
             tmp = tmp->next;
-        }
         if (tmp->next != NULL)
         {
             Node *tmp2 = tmp->next;
@@ -64,18 +61,14 @@ void Table::del(char *s)
 bool Table::exist(char *s)
 {
     int key = function->hash(s, size);
-    if (m[key] == NULL)
-        return true;
+    if (matrix[key] == NULL)
+        return false;
     else
     {
-        Node *tmp = m[key];
+        Node *tmp = matrix[key];
         while(strcmp(tmp->str, s) != 0 && tmp->next != NULL)
             tmp = tmp->next;
-        if (strcmp(tmp->str, s) == 0)
-            return false;
-        else
-            return true;
-
+        return (strcmp(tmp->str, s) == 0);
     }
 }
 
@@ -92,9 +85,9 @@ void Table::stats()
     for (int i = 0; i < size; i++)
     {
         int tmp1 = 0;
-        if (m[i] != NULL)
+        if (matrix[i] != NULL)
         {
-            Node *tmp = m[i];
+            Node *tmp = matrix[i];
             k++;
             tmp1++;
             if (tmp->next != NULL)
@@ -120,28 +113,23 @@ void Table::changeFunc(HashFunc *f)
 
 void Table::rebuild()
 {
-    m2 = new Node *[size];
+    helpMatrix = new Node *[size];
     for (int i = 0; i < size; i++)
-        m2[i] = NULL;
+        helpMatrix[i] = NULL;
 
-    Node **l;
-    l = m;
-    m = m2;
-    m2 = l;
+    Node **newMatrix;
+    newMatrix = matrix;
+    matrix = helpMatrix;
+    helpMatrix = newMatrix;
 
     for (int i = 0; i < size; i++)
-    {
-        if (m2[i] != NULL)
+        while (helpMatrix[i] != NULL)
         {
-            while (m2[i] != NULL)
-            {
-                add(m2[i]->str);
-                Node *tmp = m2[i];
-                m2[i] = m2[i]->next;
-                delete tmp;
-            }
+            add(helpMatrix[i]->str);
+            Node *tmp = helpMatrix[i];
+            helpMatrix[i] = helpMatrix[i]->next;
+            delete tmp;
         }
-    }
-    delete[] m2;
 
+    delete[] helpMatrix;
 }

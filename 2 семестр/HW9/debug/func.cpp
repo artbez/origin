@@ -1,7 +1,5 @@
 #include "func.h"
 
-#pragma once
-
 int Func1::hash(char *s, const int size)
 {
     const int p = 59;
@@ -22,7 +20,7 @@ int Func2::hash(char *s, const int size)
     unsigned long long pPower = 1;
     unsigned long long hash = 0;
     int n = strlen(s);
-    for (int i = n; i >= 0; i--)
+    for (int i = n - 1; i >= 0; i--)
     {
         hash = hash + s[i] * pPower;
         pPower = pPower * p;

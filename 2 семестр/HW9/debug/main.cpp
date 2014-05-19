@@ -9,62 +9,61 @@ int main()
     printf("\n\n\n");
 
     Table *t = new Table;
-    char choice = '-';
-    char s[100];
+    const int size = 200;
+    char s[size];
 
     HashFunc *f1 = new Func1;
     HashFunc *f2 = new Func2;
 
-
-
-
+    char choice = '-';
     while(choice != '0')
     {
         printf("0 - Exit\n");
         printf("1 - Add string\n");
         printf("2 - Del string\n");
-        printf("3 - Show stats\n");
-        printf("4 - Search string\n");
-	printf("5 - Select hash-function\n");
+        printf("3 - Search string\n");
+        printf("4 - Show stats\n");
+        printf("5 - Select hash-function\n");
         choice = getc(stdin);
         getc(stdin);
         printf("\n");
 
-
-        if (choice == '1')
+        switch (choice)
+        {
+        case '1':
         {
             printf("Enter the string: ");
-            fgets(s, 200, stdin);
+            fgets(s, size, stdin);
             t->add(s);
             printf("\n\n");
+            break;
         }
-        else if (choice == '2')
+        case '2':
         {
             printf("Enter the string: ");
-            fgets(s, 200, stdin);
+            fgets(s, size, stdin);
             t->del(s);
             printf("\n\n");
+            break;
         }
-        else if (choice == '3')
+        case '3':
         {
             printf("Enter the string: ");
-            fgets(s, 200, stdin);
-            if(t->exist(s))
-                printf("Yes");
-            else
-                printf("No");
-
+            fgets(s, size, stdin);
+            printf(t->exist(s) ? "Yes" : "No");
             printf("\n\n");
+            break;
         }
-        else if (choice == '4')
+        case '4':
         {
             printf("Numer of cells: %i\n", t->cells());
             t->stats();
             printf("Load factor is %lf\n", t->loadFactor);
             printf("Number of conflicts is %i\n", t->conflicts);
             printf("Maximum length of conflict is %i\n\n", t->lconf);
+            break;
         }
-        else if (choice == '5')
+        case '5':
         {
             printf("Enter the number of func (1/2): ");
             char c = '-';
@@ -74,18 +73,13 @@ int main()
                 t->changeFunc(f1);
             else if (c == '2')
                 t->changeFunc(f2);
-
+            break;
+        }
         }
     }
 
-
-
-
-
-
-
-
-
     delete t;
+    delete f1;
+    delete f2;
     return 0;
 }

@@ -37,9 +37,9 @@ public:
     };
     //размер таблицы
     int size;
-    Node **m;
+    Node **matrix;
     //необходим для перестройки таблицы
-    Node **m2;
+    Node **helpMatrix;
     HashFunc *function;
 
 };
