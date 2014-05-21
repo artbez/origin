@@ -7,7 +7,6 @@
 #include "intcomporator.h"
 #include "stringcomporator.h"
 #include <iostream>
-#include <algorithm>
 #include <string>
 
 using std::string;
@@ -34,8 +33,8 @@ private slots:
         for (int i = 0; i < size; ++i)
             if (arr[i] != i + 1)
                 resultIsCorrect = false;
-        QVERIFY(resultIsCorrect);
         delete[] arr;
+        QVERIFY(resultIsCorrect);
     }
 
     /// Testing buble sort with strings
