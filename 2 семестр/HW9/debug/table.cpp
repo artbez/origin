@@ -18,8 +18,8 @@ Table::~Table()
             delete tmp;
         }
 
+    delete function;
     delete[] matrix;
-
 }
 
 void Table::add(char *s)
