@@ -32,7 +32,7 @@ private slots:
         int * newValue = new int(intValue + 42);
         SharedPointer<int> newSh(newValue);
         newSh = sh;
-        QVERIFY((*newSh.getPointer()) == intValue);
+        QVERIFY(((*newSh.getPointer()) == intValue) && (newSh.getCount() == 2));
     }
 
     void countLinks()
@@ -45,10 +45,10 @@ private slots:
     void deleteTest()
     {
         SharedPointer<int> sh(value);
-        SharedPointer<int> newSh(sh);
-        newSh.deleteSharedPointer();
+        SharedPointer<int> * newSh = new SharedPointer<int>(sh);
+        delete newSh;
         int answer = sh.getCount();
-        QVERIFY(answer == 1 && ((*sh.getPointer()) == intValue));
+        QVERIFY((answer == 1) && (((*sh.getPointer()) == intValue)));
     }
 
 private:

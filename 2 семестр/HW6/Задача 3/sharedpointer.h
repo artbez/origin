@@ -17,7 +17,6 @@ public:
     /// Constructor of copying
     SharedPointer(SharedPointer<T> &sp);
     ~SharedPointer();
-    void deleteSharedPointer();
     void operator=(SharedPointer<T>& sp);
     SPointer<T> * getSPointer();
     /// Returns pointer which is covered by SharedPointer
@@ -25,7 +24,7 @@ public:
     /// Returns number of links to the memory which is indicated by the pointer
     int getCount();
 private:
-    void deleteSPointer();
+    void deleteSharedPointer();
     SPointer<T> * sPointer = nullptr;
 };
 
@@ -47,9 +46,7 @@ SharedPointer<T>::SharedPointer(SharedPointer<T> &sp)
 template <typename T>
 void SharedPointer<T>::operator=(SharedPointer<T> &sp)
 {
-    if (sPointer->count == 0)
-        deleteSPointer();
-
+    deleteSharedPointer();
     sp.getSPointer()->count++;
     sPointer = sp.getSPointer();
 }
@@ -57,20 +54,7 @@ void SharedPointer<T>::operator=(SharedPointer<T> &sp)
 template <typename T>
 SharedPointer<T>::~SharedPointer()
 {
-    if (sPointer != nullptr)
-        deleteSharedPointer();
-}
-
-template <typename T>
-void SharedPointer<T>::deleteSharedPointer()
-{
-    deleteSPointer();
-    if (sPointer->count == 0)
-    {
-        delete sPointer;
-        sPointer = nullptr;
-    }
-
+    deleteSharedPointer();
 }
 
 template <typename T>
@@ -92,13 +76,12 @@ int SharedPointer<T>::getCount()
 }
 
 template <typename T>
-void SharedPointer<T>::deleteSPointer()
+void SharedPointer<T>::deleteSharedPointer()
 {
     if (sPointer->count == 1)
     {
-        sPointer->count--;
         delete sPointer->pointer;
-        sPointer->pointer = nullptr;
+        delete sPointer;
     }
     else
         sPointer->count--;
