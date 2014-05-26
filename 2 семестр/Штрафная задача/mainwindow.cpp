@@ -124,11 +124,9 @@ void MainWindow::deleteNetworkStaff()
 {
     if (server != nullptr)
         delete server;
-    server = new Server();
 
     if (client != nullptr)
         delete client;
-    client = new Client();
 
     if (dialog != nullptr)
         delete dialog;
@@ -197,6 +195,8 @@ void MainWindow::choiceMenu()
     gameOffline();
     setEnabled(true);
     deleteNetworkStaff();
+    server = new Server();
+    client = new Client();
     dialog = new Dialog(server, client);
     connect(dialog, SIGNAL(rejected()), this, SLOT(gameOffline()));
     connect(server, SIGNAL(rejected()), this, SLOT(gameOffline()));
