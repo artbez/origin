@@ -4,6 +4,7 @@
 #
 #-------------------------------------------------
 
+QT       += testlib
 QT       += core
 
 QT       -= gui
@@ -23,4 +24,5 @@ SOURCES += main.cpp \
 HEADERS += \
     operationsystem.h \
     computer.h \
-    lan.h
+    lan.h \
+    test.h

@@ -59,7 +59,7 @@ void Lan::update()
 		/// status = is computer i with a virus
 		if (comps[i].getStatus())
 		{
-			for (int j = i + 1; j < numberOfComputers; ++j)
+			for (int j = 0; j < numberOfComputers; ++j)
 				if (matrix[i][j] && comps[j].virusAttack())
 					newIllComputers[j] = true;
 		}

@@ -5,6 +5,11 @@ Computer::Computer() : status(false)
 	srand(time(NULL));
 }
 
+Computer::~Computer()
+{
+	delete os;
+}
+
 void Computer::setStatus(bool newStatus)
 {
 	status = newStatus;
@@ -22,13 +27,23 @@ bool Computer::getStatus()
 
 void Computer::setOperationSystemById(int id)
 {
-	os.generateById(id);
+	switch(id)
+	{
+	case 0:
+		os = new MyWindows();
+		break;
+	case 1:
+		os = new MyLinux();
+		break;
+	case 2:
+		os = new MyMac();
+	}
 }
 
 QString Computer::getInfo()
 {
 	QString info = "Computer has number = " + QString::number(getNumber())
-			+ ". Operation System is " + os.getName() + ". "
+			+ ". Operation System is " + os->getName() + ". "
 			+ (status ? "With a virus." : "Without any viruses.");
 	return info;
 }
@@ -41,7 +56,5 @@ int Computer::getNumber()
 bool Computer::virusAttack()
 {
 	int curPos = rand() % 100 + 1;
-	if (curPos <= (os.getProbability() * 100))
-		return true;
-	return false;
+	return (curPos <= (os->getProbability() * 100));
 }

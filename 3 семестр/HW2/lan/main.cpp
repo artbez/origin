@@ -1,9 +1,12 @@
 #include <iostream>
 #include <QDebug>
-#include "lan.h"
+#include "test.h"
 
 int main()
 {
+	Test networkTest;
+	QTest::qExec(&networkTest);
+
 	int number = 0;
 	qDebug() << "Enter number of computers";
 	std::cin >> number;

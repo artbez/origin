@@ -9,6 +9,7 @@ class Computer
 {
 public:
 	Computer();
+	~Computer();
 	void setStatus(bool newStatus);
 	bool getStatus();
 	QString getInfo();
@@ -19,7 +20,7 @@ public:
 	/// Based on the id choose an operation system
 	void setOperationSystemById(int id);
 private:
-	OperationSystem os;
+	OperationSystem * os;
 	/// true if it is with virus
 	bool status;
 	/// number of the computer
