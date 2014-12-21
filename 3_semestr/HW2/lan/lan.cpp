@@ -38,6 +38,11 @@ void Lan::setConnections(int computer1, int computer2)
 	matrix[computer2][computer1] = true;
 }
 
+bool Lan::isConnection(int computer1, int computer2)
+{
+	return matrix[computer1][computer2];
+}
+
 QString Lan::getInfo()
 {
 	QString info = "There are " + QString::number(numberOfComputers) + " comupters.\n";

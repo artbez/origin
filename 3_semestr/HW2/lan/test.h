@@ -44,4 +44,34 @@ private slots:
 
 		QVERIFY(!myLan.comps[n - 1].getStatus());
 	}
+
+	void nontrivialConnection()
+	{
+		const int n = 7;
+		Lan myLan(n);
+		myLan.setConnections(0, 1);
+		myLan.setConnections(1, 2);
+		myLan.setConnections(1, 3);
+		myLan.setConnections(3, 4);
+		myLan.setConnections(3, 5);
+		myLan.setConnections(5, 6);
+		myLan.makeWithVirus(0);
+
+		bool flag = false;
+		while(!flag)
+		{
+			flag = true;
+			myLan.update();
+
+			for (int i = 0; i < n; ++i)
+				flag = flag && myLan.comps[i].getStatus();
+
+			for (int i = 0; i < n; ++i)
+			{
+				if (myLan.comps[i].getStatus())
+					for (int j = 0; j < i; ++j)
+						QVERIFY(!myLan.isConnection(j, i) || myLan.comps[j].getStatus());
+			}
+		}
+	}
 };

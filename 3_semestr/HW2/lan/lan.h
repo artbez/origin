@@ -18,6 +18,7 @@ public:
 	/// Spend a virus to computer with number "computer"
 	void makeWithVirus(int computer);
 	/// Array of computers
+	bool isConnection(int computer1, int computer2);
 	Computer * comps;
 private:
 	/// Connection's matrix
