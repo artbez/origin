@@ -1,10 +1,12 @@
 isCorrect :: String -> Bool
-isCorrect s = isCorrect' s 0 where
-          isCorrect' s k 
-            | k < 0  = False
-            | k >= 0 = case s of
-              []       -> k == 0
-              '(':xs  -> isCorrect' xs (k + 1)
-              ')':xs  -> isCorrect' xs (k - 1)
-              _:xs    -> isCorrect' xs k
+isCorrect s = isCorrect' s [] where
+          isCorrect' (x1:xs) k = case (x1, k) of
+                     ('(', _) -> isCorrect' xs ('(':k)
+                     ('[', _) -> isCorrect' xs ('[':k)
+                     ('{', _) -> isCorrect' xs ('{':k)
+                     (')', ('(':ks)) -> isCorrect' xs ks
+                     (']', ('[':ks)) -> isCorrect' xs ks
+                     ('}', ('{':ks)) -> isCorrect' xs ks
+                     (_, _) -> False
+          isCorrect' [] k = True
            
